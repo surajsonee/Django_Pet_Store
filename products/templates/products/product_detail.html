@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load myproduct_tags %}
+{% load crispy_forms_tags %}
+
+{% block title %} | {{ product.title }}{% endblock %}
+{% block content %}
+
+<div class="row">
+    <!-- main product image -->
+    <div class="col-md-6">
+        <div class="product-image">
+            <img src="{{ product.image.url }}" alt="Product image">
+        </div>
+    </div>
+    <!-- /main product image -->
+
+    <!-- product details -->
+    <div class="col-md-6">
+        <div class="product-details">
+            <h2 class="product-title">{{ product.title }}</h2>
+            {% include 'partials/_product_admin.html' %}
+            <span class="product-brand">{{ product.brand }}</span>
+            <!-- ratings -->
+            <div class="product-rating">
+                {% autoescape off %}
+                {{ product_rating|star_generator }}
+                {% endautoescape %}
+                <span class="product-reviews"> {{ product.review_count}} reviews</span>
+            </div>
+            <!-- /ratings -->
+            <!-- price and stock -->
+
+            <h3 class="product-price">€{{ product.price|intcomma }}</h3>
+            {% if product.stock > 0 %}
+            <span class="stock in-stock">Available</span>
+            {% else %}
+            <span class="stock out-of-stock">Out of Stock</span>
+            {% endif %}
+            <!-- /price and stock -->
+
+            <a href="{% url 'add_to_basket' product_id=product.id %}" class="add-to-basket">Add to Basket</a>
+        </div>
+    </div>
+    <!-- /product details -->
+    <!-- product description/reviews -->
+    <div class="col-12">
+        <div id="product-extras">
+            <ul class="tab-nav" id="product-tabs" role="tablist">
+                <li class="active">
+                    <a id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description"
+                        aria-selected="true">Description</a>
+                </li>
+                <li>
+                    <a id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                        aria-selected="false">Reviews</a>
+                </li>
+                <li>
+                    <a id="add-review-tab" data-toggle="tab" href="#add-review" role="tab" aria-controls="add-review"
+                        aria-selected="false">Leave a Review</a>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="product-tabs-content">
+                <div class="tab-pane fade show active" id="description" role="tabpanel"
+                    aria-labelledby="description-tab">
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                    <ul class="reviews">
+                        {% for review in product.reviews.all %}
+                        <li>
+                            <div class="review-heading">
+                                <h5 class="name">{{ review.user.first_name }}</h5>
+                                <p class="date">{{ review.date|naturaltime }}</p>
+                                <div class="review-rating">
+                                    {% autoescape off %}
+                                    {{ review.rating|star_generator }}
+                                    {% endautoescape %}
+                                </div>
+                            </div>
+                            <div class="review-body">
+                                <p>{{ review.review }}</p>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li>This product does not yet have any reviews. You can be the first!</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="add-review" role="tabpanel" aria-labelledby="add-review-tab">
+                    {% if user.is_authenticated %}
+                    {% if display_form is True %}
+                    {# only display form if user has not already posted a comment #}
+                    {% crispy form %}
+                    {% else %}
+                    <p>You have already submitted a review for this product.</p>
+                    {% endif %}
+                    {% else %}
+                    <p>You need to <a href="{% url 'account_signup' %}">Register</a> or <a
+                            href="{% url 'account_login' %}">Login</a> to leave a review. </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

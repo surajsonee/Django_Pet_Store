@@ -1,0 +1,268 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* navbar */
+
+
+/* homepage */
+
+.best-sellers-container {
+    background-color: #0092D6;
+}
+
+.new-products-container {}
+
+/* general */
+.checked {
+    color: #ffb347;
+}
+
+.unchecked {
+    color: #cfcfc4;
+}
+
+span.cart-badge {
+    position: relative;
+    top: -20px;
+    left: -5px;
+}
+
+/* product listing */
+.product {
+    position: relative;
+    margin: 15px 0;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
+    box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
+    /* border: 1px solid #E4E7ED; */
+    -webkit-transition: 0.8s all;
+    transition: 0.8s all;
+}
+
+.product:hover {
+    -webkit-box-shadow: 0px 0px 0px 0px #0092D6, 0px 0px 0px 2px #0092D6;
+    box-shadow: 0px 0px 0px 0px #0092D6, 0px 0px 0px 2px #0092D6;
+    /* border: 2px solid #0092D6; */
+    border-radius: 0px;
+}
+
+.product .product-img {
+    position: relative;
+    height: 200px;
+}
+
+.product .product-img>img {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    max-height: 190px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.product-body {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    z-index: 10;
+}
+
+.product-body .product-title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 15px;
+    -webkit-transition: 0.4s all;
+    transition: 0.4s all;
+}
+
+.product-body .product-title:hover {
+    color: #0092D6;
+}
+
+.product-body .product-price {
+    font-weight: 700;
+    font-size: 18px;
+    color: #0092D6;
+}
+
+.product-body .product-rating {
+    position: relative;
+    height: 20px;
+}
+
+.product-body .product-rating>i {
+    position: relative;
+    z-index: 2;
+}
+
+.product-body .product-rating:after {
+    content: '';
+    position: absolute;
+    margin-top: 6px;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #E4E7ED;
+}
+
+.product-body .product-options {
+    text-align: center;
+    font-size: 18px;
+}
+
+.product-body .product-options>a {
+    display: inline-block;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: 0.6s all;
+    transition: 0.6s all;
+}
+
+.product-body .product-options>a:hover {
+    border-radius: 20px;
+    background-color: rgb(185, 181, 181);
+    color: #0092D6;
+}
+
+/* ./product listing */
+
+/* product detail */
+.product-image {
+    position: relative;
+    display: block;
+}
+
+.product-image>img {
+    width: 100%;
+}
+
+.product-details .product-title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.product-details .product-brand {}
+
+.product-details .product-price {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 22px;
+    color: #0092D6;
+    width: 30%;
+}
+
+.product-details .stock {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.product-details .in-stock {
+    color: darkgreen;
+}
+
+.product-details .out-of-stock {
+    color: red;
+}
+
+
+/* ./product detail */
+
+/* basket */
+.basket .item-total {
+    font-size: 18px;
+    color: #0092D6;
+    font-weight: bold;
+}
+
+.basket .item-price,
+.total td,
+.delivery td {
+    font-weight: bold;
+}
+
+.basket td,
+.basket th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.basket td:first-child,
+.basket th:first-child {
+    text-align: left;
+}
+
+.basket input[type=number] {
+    max-width: 80px;
+    text-align: center;
+}
+
+.basket img {
+    height: 100%;
+    width: 100%;
+
+    max-height: 100px;
+    max-width: 150px;
+
+    object-fit: contain;
+}
+
+
+/* profile */
+#profile-links {
+    float: right;
+}
+
+
+/* change email */
+.profileEmail {
+    margin: 0 10px 0 10px;
+}
+
+.ctrlHolder,
+.buttonHolder {
+    padding-left: 10px;
+}
+
+.buttonHolder {
+    margin-top: 20px;
+}
+
+.email_list {
+    margin-left: 10px;
+    padding: 10px 0 10px 0;
+}
+
+span.unverified,
+span.verified {
+    font-weight: bold;
+}
+
+.add_email {
+    margin-top: 20px;
+}
+
+/* order form */
+.order-form h5 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.order-form h5>i {
+    font-size: 25px;
+    color: #292b2c;
+}
+
+/* order history */
+ul.order-items {
+    list-style-type: none;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
